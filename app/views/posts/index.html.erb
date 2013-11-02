@@ -1,0 +1,11 @@
+<%= render 'shared/title', title: 'All Posts', subtext: "as of #{Time.now}" %>
+
+<% @posts.each do |post| %>
+  <div class="well">
+    <%= render post.categories %>
+    <h4><%= link_to post.title, post.url %></h4>
+    <p><%= post.description %></p>
+    <p class="text-success small"><%= link_to "#{post.comments.size} comments", post_path(post) %></p>
+    <small class="muted">Created by <strong><%= post.user.username %></strong> at <%= post.created_at %></small>
+  </div>
+  <%end%>
