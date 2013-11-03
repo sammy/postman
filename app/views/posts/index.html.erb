@@ -1,4 +1,4 @@
-<%= render 'shared/title', title: 'All Posts', subtext: "as of #{Time.now}" %>
+<%= render 'shared/title', title: 'All Posts', subtext: "as of #{Time.now.asctime}" %>
 
 <% @posts.each do |post| %>
   <div class="well">
@@ -6,6 +6,15 @@
     <h4><%= link_to post.title, post.url %></h4>
     <p><%= post.description %></p>
     <p class="text-success small"><%= link_to "#{post.comments.size} comments", post_path(post) %></p>
-    <small class="muted">Created by <strong><%= post.user.username %></strong> at <%= post.created_at %></small>
+    <small class="muted">
+      Posted 
+        <% unless post.user.nil? %>
+          by <strong><%= post.user.username %></strong> 
+        <% end %>
+      at <%= post.created_at %>
+      <% if post.created_at != post.updated_at %>
+        and modified at <%= post.updated_at %>
+      <% end %>
+    </small>
   </div>
   <%end%>

@@ -23,7 +23,7 @@
  }
 
 body {
-background: image-url("wild_flowers.png");  
+background: image-url("blu_stripes.png");  
 }
 
 .navbar {
@@ -32,6 +32,12 @@ background: image-url("wild_flowers.png");
 
 .well {
   box-shadow: 3px 2px 3px #888888;
+  background: image-url("vintage_speckles.png")
+}
+
+.field_with_errors input,
+.field_with_errors textarea {
+  border: 1px solid #d91600;
 }
 
  .container {

@@ -1,0 +1,10 @@
+<% unless object.errors.empty? %>
+  <div class="alert alert-error">
+    The following errors were encountered while submitting...
+    <ul>
+      <% object.errors.full_messages.each do |err| %>
+        <li><%= err %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
