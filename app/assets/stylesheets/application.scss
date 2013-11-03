@@ -35,6 +35,15 @@ background: image-url("blu_stripes.png");
   background: image-url("vintage_speckles.png")
 }
 
+.description-height {
+  height: 80px;
+  overflow:scroll;
+}
+
+.gutter {
+  margin-right:15px;
+}
+
 .field_with_errors input,
 .field_with_errors textarea {
   border: 1px solid #d91600;

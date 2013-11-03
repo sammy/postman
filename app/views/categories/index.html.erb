@@ -1,0 +1,13 @@
+<%= render 'shared/title', title: 'All Categories' %>
+
+
+  <% @categories.each do |cat| %>
+    <div class="row pull-left gutter">
+      <div class="span3">
+        <div class="well">
+          <%= cat.name %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
