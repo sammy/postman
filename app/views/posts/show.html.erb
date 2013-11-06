@@ -1,21 +1,21 @@
-<p class="well pull-right">
-  <%= render @post.categories %>
-</p>
-
 <%= render 'shared/title', title: @post.title %>
 
-
 <p class="well">
+  <%= render @post.categories %>
   <%= @post.description %>
 </p>
 
-<p class="well">
-
+<hr>
+  <h4>Comments</h4>
+<hr>
+<%= render 'shared/form_errors', object: @comment %>
+<h5>Post a comment</h5>
   <%= form_for [@post, @comment] do |f| %>
     <%= f.label :body %>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, :size => "60x3" %>
     <br>
     <%= f.submit :Send, :class => 'btn btn-primary' %>
   <% end %>
 
-</p>
+
+<%= render @post.comments %>
