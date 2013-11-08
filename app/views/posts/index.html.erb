@@ -1,28 +1,3 @@
 <%= render 'shared/title', title: 'All Posts', subtext: "as of #{Time.now.asctime}" %>
 
-<% @posts.each do |post| %>
-  <div class="row pull-left gutter">
-    <div class="span5">
-
-      <div class="well">
-        <%= render post.categories %>
-        <h4><%= link_to post.title, post.url %></h4>
-        <div class="description-height"><%= post.description %></div>
-        <p class="text-success small"><%= link_to "#{post.comments.size} comments", post_path(post) %></p>
-        <small class="muted">
-          Posted 
-            <% unless post.user.nil? %>
-              by <strong><%= post.user.username %></strong> 
-            <% end %>
-          at <%= post.created_at %>
-          <!--
-          <% if post.created_at != post.updated_at %>
-            and modified at <%= post.updated_at %>
-          <% end %>
-          -->
-        </small>
-      </div>
-
-    </div>
-  </div>
-<%end%>
+<%= render 'posts' %>

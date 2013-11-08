@@ -8,6 +8,11 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def show
+    @category = Category.find(params[:id])
+    @posts = Post.joins(:categories).where("category_id = ?", params[:id])
+  end
+
   def create
     @category = Category.new(category_params)
 
