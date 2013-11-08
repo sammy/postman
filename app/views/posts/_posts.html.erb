@@ -4,7 +4,7 @@
 
       <div class="well">
         <%= render post.categories %>
-        <h4><%= link_to post.title, post.url %></h4>
+        <h4><%= link_to post.title, urlize(post.url) %></h4>
         <div class="description-height"><%= post.description %></div>
         <p class="text-success small"><%= link_to "#{post.comments.size} comments", post_path(post) %></p>
         <small class="muted">
