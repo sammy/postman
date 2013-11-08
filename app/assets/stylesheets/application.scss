@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
- @import "bootstrap";
+ @import "bootstrap"; 
 
  * {
  font-family: 'Oxygen', sans-serif;
@@ -56,6 +56,24 @@ background: image-url("blu_stripes.png");
  .container {
   margin-left: 135px
 }
+
+#category_btn label {
+  display:inline;
+  background:#585858;
+  padding:4px 10px 4px 10px;
+  -moz-border-radius: 30px;
+  font-size: 12px;
+  border-radius: 5px;
+  color:white;
+  margin:4px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  font-weight:bold;}
+#category_btn input[type="checkbox"]:checked+label{ color:white; background:green; } 
+#category_btn input[type="checkbox"] { display:none;}
+
+
+
+/*--------------------------*/
 
 .navbar .nav > li > a.brand {
   padding-left: 0px;

@@ -11,9 +11,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   def create
+    
     @post = Post.new(post_params)
 
     if @post.save
@@ -25,6 +27,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
   end
 
   def update
@@ -36,6 +39,10 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def to_s
+    "#{url}-#{title}"
   end
 
 private

@@ -6,4 +6,8 @@ class Post < ActiveRecord::Base
 
   validates :title, :description, :url, presence: true
 
+  def to_s
+    "#{title}-#{url}"
+  end
+
 end
