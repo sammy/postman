@@ -10,7 +10,6 @@
   <%= f.text_field :url %>
   <br>
   <h5>Categories</h5>
-  
   <div id="category_btn">
     <%= f.collection_check_boxes  :category_ids, @categories, :id, :name %>
   </div>

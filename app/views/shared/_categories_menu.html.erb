@@ -1,0 +1,11 @@
+<div class="btn-group">
+  <button class="btn btn-small btn-inverse">Categories</button>
+  <button class="btn dropdown-toggle btn-small btn-inverse" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <% @categories.each do |cat| %>
+      <li><%= link_to cat.name, category_path(cat) %></a></li>
+    <% end %>
+  </ul>
+</div>
