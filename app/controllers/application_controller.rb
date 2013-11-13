@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     @categories = Category.all
   end
 
+  def passwords_match?
+    params[:password] == params[:password_confirmation]
+  end
+
 end

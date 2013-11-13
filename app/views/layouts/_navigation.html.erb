@@ -1,5 +1,13 @@
 <ul class="nav">
   <li><%= link_to image_tag("postman.png"), root_path %></li>
-  <li><%= link_to 'New Post', new_post_path %></li>
-  <li><%= render 'shared/categories_menu' %></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
 </ul>
+
+<div class="nav-item">
+  <%= render 'shared/categories_menu' %>
+  <%= link_to raw(("<i class='icon-plus icon-white'></i>")+' New Post'), new_post_path, :class => "btn btn-success btn-small" %>
+  <%= link_to raw(("<i class='icon-star-empty icon-white'></i>")+' Register'), register_path, :class => "btn btn-danger btn-small pull-right" %>
+</div>

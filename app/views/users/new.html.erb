@@ -1,0 +1,19 @@
+<%= render 'shared/title', title: 'Register to Postman!' %>
+<%= render 'shared/form_errors', object: @user %>
+
+<%= form_tag (register_path) %>
+  
+  <%= label_tag :username %>
+  <%= text_field_tag :username, params[:username] %>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :password, params[:password], :placeholder => 'minimum 6 characters' %>
+
+  <%= label_tag :password_confirmation, 'Re-type password' %>
+  <%= password_field_tag :password_confirmation, params[:password_confirmation], :placeholder => 'repeat password' %>
+
+  <br/>
+
+  <%= submit_tag :register, :class => 'btn btn-success' %>
+
+
