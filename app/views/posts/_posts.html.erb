@@ -10,6 +10,14 @@
             <%= link_to "#{post.comments.size} comments", post_path(post) %>
           </span>
           <span class="pull-right">
+            <%= link_to vote_post_path(post, vote: :true), method: :post  do %>
+              <i class="icon-thumbs-up"></i>
+            <% end %>
+            <span><%= post.total_votes %></span>
+            <%= link_to vote_post_path(post, vote: :false), method: :post  do %>
+              <i class="icon-thumbs-down"></i>
+            <% end %>
+
             <%= link_to raw(("<i class='icon-pencil'></i>")+' Edit'), edit_post_path(post), :class => "btn btn-mini" if logged_in? %>
           </span>
         </div>

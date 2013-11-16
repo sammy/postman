@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  before_action :set_post, :only => [:show, :edit]
+  before_action :set_post, :only => [:show, :edit, :vote]
   before_action :require_login, :only => [:new, :create, :edit, :update]
   
   def index
@@ -8,7 +8,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    current_user
     @comment = Comment.new
   end
 
@@ -43,9 +42,16 @@ class PostsController < ApplicationController
     end
   end
 
-  def to_s
-    "#{url}-#{title}"
+  def vote
+    
+    if @post.votes.create(:vote => params[:vote], :user_id => current_user.id)
+      flash[:notice] = "Your vote has been submitted!"
+      redirect_to :back
+    else
+      flash[:alert] = "Your vote was NOT counted!"
+    end
   end
+
 
 private
 

@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = User.find(session[:user_id])
+  end
+
   def create
     @user = User.new(username: params[:username], password: params[:password]) 
     if passwords_match?

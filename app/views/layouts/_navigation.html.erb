@@ -10,11 +10,35 @@
   <%= render 'shared/categories_menu' %>
 
   <% if logged_in? %>
-    <%= link_to raw(("<i class='icon-plus icon-white'></i>")+' New Post'), new_post_path, :class => "btn btn-success btn-small spaceme" %>
-    <%= link_to raw(("<i class='icon-off icon-white'></i>")+' Logout'), logout_path, :class => "btn btn-danger btn-small pull-right spaceme" %>
+      <div class="btn-group">
+        <a class="btn dropdown-toggle btn-small btn-success" data-toggle="dropdown" href="#"><i class='icon-plus icon-white'></i>New
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><%= link_to raw(("<i class='icon-file'></i>")+' Post'), new_post_path %></li>
+          <li><%= link_to raw(("<i class='icon-tag'></i>")+' Category'), new_category_path %></li>
+        </ul>
+      </div>
+    
+    <div class="pull-right">
+      <div class="btn-group">
+        <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class='icon-user'></i> <%= @current_user.username.capitalize %>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><%= link_to raw(("<i class='icon-off'></i>")+' Logout'), logout_path %></li>
+          <li><%= link_to raw(("<i class='icon-wrench'></i>")+' Edit Profile'), edit_profile_path(@current_user.username) %></li>
+        </ul>
+      </div>
+    </div>
+
   <% else %>
     <%= link_to raw(("<i class='icon-star-empty icon-white'></i>")+' Register'), register_path, :class => "btn btn-danger btn-small pull-right spaceme" %>
     <%= link_to raw(("<i class='icon-star-empty icon-white'></i>")+' Login'), login_path, :class => "btn btn-success btn-small pull-right spaceme" %>
   <% end %>
 
 </div>
+ 
+
+
+ 
