@@ -1,11 +1,14 @@
 class PostsController < ApplicationController
+  
   before_action :set_post, :only => [:show, :edit]
+  before_action :require_login, :only => [:new, :create, :edit, :update]
   
   def index
     @posts = Post.all(:order => "created_at DESC")
   end
 
   def show
+    current_user
     @comment = Comment.new
   end
 

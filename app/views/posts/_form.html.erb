@@ -13,6 +13,9 @@
   <div id="category_btn">
     <%= f.collection_check_boxes  :category_ids, @categories, :id, :name %>
   </div>
+
+  <%= f.hidden_field :user_id, :value => @current_user.id %>
+
   <br/>
 <%= f.submit 'Hang it on the wall', :class => "btn btn-primary" %>
 

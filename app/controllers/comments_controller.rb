@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :require_login
+
   def create
     #binding.pry
     @post = Post.find(params[:post_id])

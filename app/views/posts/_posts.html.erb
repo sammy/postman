@@ -5,7 +5,14 @@
         <%= render post.categories %>
         <h4><%= link_to post.title, urlize(post.url) %></h4>
         <div class="description-height"><%= post.description %></div>
-        <p class="text-success small"><%= link_to "#{post.comments.size} comments", post_path(post) %></p>
+        <div class="text-success small">
+          <span>
+            <%= link_to "#{post.comments.size} comments", post_path(post) %>
+          </span>
+          <span class="pull-right">
+            <%= link_to raw(("<i class='icon-pencil'></i>")+' Edit'), edit_post_path(post), :class => "btn btn-mini" if logged_in? %>
+          </span>
+        </div>
         <%= render 'shared/creator_and_timestamp', obj: post %>
       </div>
     </div>
