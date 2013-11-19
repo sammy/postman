@@ -1,9 +1,10 @@
 PostitTemplate::Application.routes.draw do
   root to: 'posts#index'
 
-  get  '/register'    , to: 'users#new'
-  post '/register'    , to: 'users#create'
-  get  '/:username/profile' , to: 'users#edit' , as: :edit_profile
+  get  '/register', to: 'users#new'
+  post '/register', to: 'users#create'
+  get  '/users/:username/edit', to: 'users#edit' , as: :edit_profile
+  get  '/users/:username', to: 'users#show', as: :show_profile
   
 
   get   '/login'  , to: 'sessions#new'
@@ -14,11 +15,14 @@ PostitTemplate::Application.routes.draw do
     member do
       post :vote
     end
-    resources :comments, only: :create
+    
+    resources :comments, only: :create do
+      member do
+        post :vote
+      end
+    end
   end
 
   resources :categories
-
-
 
 end

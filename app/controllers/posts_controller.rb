@@ -16,8 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    
-    @post = Post.new(post_params)
+    @post = Post.new(post_params) 
 
     if @post.save
       flash[:notice] = "Your post has been created!"
@@ -43,13 +42,18 @@ class PostsController < ApplicationController
   end
 
   def vote
-    
-    if @post.votes.create(:vote => params[:vote], :user_id => current_user.id)
-      flash[:notice] = "Your vote has been submitted!"
-      redirect_to :back
+    if logged_in?
+      @vote = Vote.create(voteable: @post, :user_id => current_user.id, :vote => params[:vote])
+
+      if @vote.valid?
+        flash[:notice] = "Your vote has been submitted!"
+      else
+        flash[:alert] = "#{@vote.errors.full_messages[0]}"
+      end
     else
-      flash[:alert] = "Your vote was NOT counted!"
+      flash[:alert] = "You need to be logged in to vote!"
     end
+    redirect_to :back
   end
 
 

@@ -1,0 +1,37 @@
+<%= render 'shared/title', title: "Profile: #{@user.username}" %>
+
+<div class="well">
+  <dl class="dl-horizontal">
+    <dt>Username:</dt>
+    <dd><%= @user.username %></dd>
+    <dt>Timezone:</dt>
+    <dd></dd>
+    <dt>2-factor auth:</dt>
+    <dd></dd>
+    <dt>Phone: </dt>
+    <dd></dd>
+  </dl>
+</div>  
+
+<p><strong><%= @user.username %>'s activity</strong></p>
+
+<div class="tabbable"> 
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Posts(<%= @posts.size %>)</a></li>
+    <li><a href="#tab2" data-toggle="tab">Comments(<%= @user.comments.size%>)</a></li>
+  </ul>
+  <div class="tab-content">
+    
+
+    <div class="tab-pane active" id="tab1">
+      <%= render 'posts/posts' %>
+    </div>
+    
+
+    <div class="tab-pane" id="tab2">
+     <%= render @user.comments %>
+    </div>
+
+
+  </div>
+</div>

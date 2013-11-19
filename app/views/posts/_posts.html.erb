@@ -1,4 +1,4 @@
-<% @posts.each do |post| %>
+<% @posts.each do |post| %> 
   <div class="row pull-left gutter">
     <div class="span5">
       <div class="well">
@@ -6,20 +6,28 @@
         <h4><%= link_to post.title, urlize(post.url) %></h4>
         <div class="description-height"><%= post.description %></div>
         <div class="text-success small">
-          <span>
-            <%= link_to "#{post.comments.size} comments", post_path(post) %>
-          </span>
-          <span class="pull-right">
-            <%= link_to vote_post_path(post, vote: :true), method: :post  do %>
-              <i class="icon-thumbs-up"></i>
-            <% end %>
-            <span><%= post.total_votes %></span>
-            <%= link_to vote_post_path(post, vote: :false), method: :post  do %>
-              <i class="icon-thumbs-down"></i>
-            <% end %>
+          <% if logged_in? %>
+            <span>
+              <%= link_to "#{post.comments.size} comments", post_path(post) %>
+            </span>
+            <span class="pull-right">
+              <%= link_to vote_post_path(post, vote: :true), method: :post  do %>
+                <i class="icon-thumbs-up"></i>
+              <% end %>
+              <% if post.total_votes > 0 %>
+                <span class="label label-success"><strong><%= post.total_votes %></strong></span>
+              <% elsif post.total_votes == 0 %>
+                <span class="label"><strong><%= post.total_votes %></strong></span>
+              <% else %>
+                <span class="label label-important"><strong><%= post.total_votes %></strong></span>
+              <% end %>
+              <%= link_to vote_post_path(post, vote: :false), method: :post  do %>
+                <i class="icon-thumbs-down"></i>
+              <% end %>
 
-            <%= link_to raw(("<i class='icon-pencil'></i>")+' Edit'), edit_post_path(post), :class => "btn btn-mini" if logged_in? %>
-          </span>
+            <%= link_to raw(("<i class='icon-pencil'></i>")+' Edit'), edit_post_path(post), :class => "btn btn-mini" %>
+            </span>
+          <% end %>
         </div>
         <%= render 'shared/creator_and_timestamp', obj: post %>
       </div>
