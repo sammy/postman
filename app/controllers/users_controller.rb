@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
-  before_filter :set_user, only: [:show, :edit]
+  before_filter :set_user, only: [:edit]
 
   def new
     @user = User.new
   end
 
   def show
+    @user = User.find_by(username: params[:username])
     @posts = @user.posts
   end
 

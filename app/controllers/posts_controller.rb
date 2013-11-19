@@ -50,7 +50,7 @@ class PostsController < ApplicationController
       else
         flash[:alert] = "#{@vote.errors.full_messages[0]}"
       end
-    else
+    else 
       flash[:alert] = "You need to be logged in to vote!"
     end
     redirect_to :back

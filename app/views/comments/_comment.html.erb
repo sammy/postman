@@ -1,14 +1,21 @@
 <p class="well comment">
-  <%= comment.body %>
+  <%= comment.body %> 
+  <span class="pull-right"><%= link_to "on: #{comment.post.title}", post_path(comment.post) if profile_page %></span>
   <br/>
   <%= render 'shared/creator_and_timestamp', obj: comment %>
   <% if logged_in? %>
     <span class="pull-right">
-      <%= link_to vote_post_comment_path(@post,comment, vote: :true), method: :post  do %>
+      <%= link_to vote_post_comment_path(comment.post,comment, vote: :true), method: :post  do %>
         <i class="icon-thumbs-up"></i>
       <% end %>
-      <span><%= comment.total_votes %></span>
-      <%= link_to vote_post_comment_path(@post,comment, vote: :false), method: :post  do %>
+      <% if comment.total_votes > 0 %>
+        <span class="label label-success"><strong><%= comment.total_votes %></strong></span>
+      <% elsif comment.total_votes == 0 %>
+        <span class="label"><strong><%= comment.total_votes %></strong></span>
+      <% else %>
+        <span class="label label-important"><strong><%= comment.total_votes %></strong></span>
+      <% end %>
+      <%= link_to vote_post_comment_path(comment.post,comment, vote: :false), method: :post  do %>
         <i class="icon-thumbs-down"></i>
       <% end %>
     </span>
