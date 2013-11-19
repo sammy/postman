@@ -17,16 +17,16 @@ class CommentsController < ApplicationController
   def vote
     if logged_in?
       @comment = Comment.find(params[:id])
-      if @comment.votes.create(:vote => params[:vote], :user_id => current_user.id) 
+      @vote = Vote.create(voteable: @comment, :user_id => current_user.id, :vote => params[:vote])
+      if @comment.valid? 
         flash[:notice] = "Your vote has been submitted!"
-        redirect_to :back
       else
         flash[:alert] = "Your vote was NOT counted!"
       end
     else
       flash[:alert] = "You need to be logged in to vote!"
-      redirect_to :back
     end
+    redirect_to :back
   end
 
 

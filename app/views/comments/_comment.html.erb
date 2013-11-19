@@ -4,11 +4,11 @@
   <%= render 'shared/creator_and_timestamp', obj: comment %>
   <% if logged_in? %>
     <span class="pull-right">
-      <%= link_to vote_post_comment_path(5,comment, vote: :true), method: :post  do %>
+      <%= link_to vote_post_comment_path(@post,comment, vote: :true), method: :post  do %>
         <i class="icon-thumbs-up"></i>
       <% end %>
       <span><%= comment.total_votes %></span>
-      <%= link_to vote_post_comment_path(5,comment, vote: :false), method: :post  do %>
+      <%= link_to vote_post_comment_path(@post,comment, vote: :false), method: :post  do %>
         <i class="icon-thumbs-down"></i>
       <% end %>
     </span>
