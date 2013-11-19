@@ -5,6 +5,7 @@ PostitTemplate::Application.routes.draw do
   post '/register', to: 'users#create'
   get  '/users/:username/edit', to: 'users#edit' , as: :edit_profile
   get  '/users/:username', to: 'users#show', as: :show_profile
+  post '/users/:id/edit', to: 'users#update', as: :update_profile
   
 
   get   '/login'  , to: 'sessions#new'

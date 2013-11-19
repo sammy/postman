@@ -1,14 +1,14 @@
  <%= render 'shared/title', title: "Edit Profile" %>
 
- <%= form_tag (edit_profile_path) %>
+ <%= form_tag (update_profile_path(@user)) %>
   <%= label_tag :username  %>
-  <%= text_field_tag :username %>
+  <%= text_field_tag :username, params[:username] %>
 
   <%= label_tag :password %>
   <%= password_field_tag :password %>
 
   <br/>
-  <%= submit_tag 'Not Implemented Yet', :class => 'btn disabled', :disabled => true %>
+  <%= submit_tag 'Update profile', :class => 'btn btn-success' %>
 
   <br/>
   <br/>

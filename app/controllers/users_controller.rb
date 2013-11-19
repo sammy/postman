@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :set_user, only: [:edit]
+  before_filter :set_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -12,6 +12,16 @@ class UsersController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    
+    if @user.update(username: params[:username], password: params[:password])
+      flash[:notice] = "Your profile has been updated"
+      redirect_to show_profile_path(@user.username)
+    else
+      render edit_profile_path(@user)
+    end
   end
 
   def create
