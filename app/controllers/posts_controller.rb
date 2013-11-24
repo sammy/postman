@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   
   before_action :set_post, :only => [:show, :edit, :vote]
-  before_action :require_login, :only => [:new, :create, :edit, :update]
+  before_action :require_login, :only => [:new, :create, :edit, :update, :vote]
   
   def index
     @posts = Post.all(:order => "created_at DESC")
@@ -42,18 +42,12 @@ class PostsController < ApplicationController
   end
 
   def vote
-    if logged_in?
-      @vote = Vote.create(voteable: @post, :user_id => current_user.id, :vote => params[:vote])
-
-      if @vote.valid?
-        flash[:notice] = "Your vote has been submitted!"
-      else
-        flash[:alert] = "#{@vote.errors.full_messages[0]}"
-      end
-    else 
-      flash[:alert] = "You need to be logged in to vote!"
+    @vote = Vote.create(voteable: @post, :user_id => current_user.id, :vote => params[:vote]) 
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
     end
-    redirect_to :back
+
   end
 
 

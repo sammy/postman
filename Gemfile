@@ -11,6 +11,7 @@ gem 'bundler'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'

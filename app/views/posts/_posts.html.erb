@@ -11,17 +11,17 @@
               <%= link_to "#{post.comments.size} comments", post_path(post) %>
             </span>
             <span class="pull-right">
-              <%= link_to vote_post_path(post, vote: :true), method: :post  do %>
+              <%= link_to vote_post_path(post, vote: :true), method: :post, remote: true  do %>
                 <i class="icon-thumbs-up"></i>
               <% end %>
               <% if post.total_votes > 0 %>
-                <span class="label label-success"><strong><%= post.total_votes %></strong></span>
+                <span class="label label-success" id="post<%= post.id %>_votes"><strong><%= post.total_votes %></strong></span>
               <% elsif post.total_votes == 0 %>
-                <span class="label"><strong><%= post.total_votes %></strong></span>
+                <span class="label" id="post<%= post.id %>_votes"><strong><%= post.total_votes %></strong></span>
               <% else %>
-                <span class="label label-important"><strong><%= post.total_votes %></strong></span>
+                <span class="label label-important" id="post<%= post.id %>_votes"><strong><%= post.total_votes %></strong></span>
               <% end %>
-              <%= link_to vote_post_path(post, vote: :false), method: :post  do %>
+              <%= link_to vote_post_path(post, vote: :false), method: :post, remote: true  do %>
                 <i class="icon-thumbs-down"></i>
               <% end %>
 
