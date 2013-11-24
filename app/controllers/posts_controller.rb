@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
 
     if @post.update(post_params)
       flash[:notice] = "Post successfully updated"
@@ -58,7 +58,7 @@ private
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
   end
 
 

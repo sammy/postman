@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def create
     
-    @post = Post.find(params[:post_id])
+    @post = Post.find_by(slug: params[:post_id])
     @comment = @post.comments.new(comment_params)
     if @comment.save
       flash[:notice] = "Your comment has been created!"
@@ -22,8 +22,6 @@ class CommentsController < ApplicationController
       format.js
     end
   end
-
-
 
   private
 
