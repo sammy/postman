@@ -10,8 +10,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
-    @posts = Post.joins(:categories).where("category_id = ?", params[:id])
+    @category = Category.find_by(slug: params[:id])
+    @posts = Post.joins(:categories).where("category_id = ?", @category.id)
   end
 
   def create
@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
   end
 
   def set_category
-    @category = Category.find(params[:id])
+    @category = Category.find_by(slug: params[:id])
   end
 
 end
