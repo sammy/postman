@@ -24,8 +24,9 @@
               <%= link_to vote_post_path(post, vote: :false), method: :post, remote: true  do %>
                 <i class="icon-thumbs-down"></i>
               <% end %>
-
-            <%= link_to raw(("<i class='icon-pencil'></i>")+' Edit'), edit_post_path(post), :class => "btn btn-mini" %>
+            <% if post.user == current_user %>
+              <%= link_to raw(("<i class='icon-pencil'></i>")+' Edit'), edit_post_path(post), :class => "btn btn-mini" %>
+            <% end %>
             </span>
           <% end %>
         </div>

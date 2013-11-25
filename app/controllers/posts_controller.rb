@@ -27,7 +27,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @categories = Category.all
+    if current_user == @post.user
+      @categories = Category.all
+    else
+      flash[:alert] = "Action not Allowed!"
+      redirect_to :posts
+    end
   end
 
   def update

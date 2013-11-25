@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   has_many :categories, through: :post_categories
   has_many :votes, as: :voteable
 
-  before_save :generate_slug
+  before_create :generate_slug
 
   validates :title, :description, :url, presence: true 
 
