@@ -10,4 +10,4 @@ $('#comment<%= @comment.id %>').html("<%= @comment.total_votes %>");
 
 <% unless @vote.errors.empty? %>
   alert('<%= @vote.errors.full_messages[0] %>');
-<% end %>
+<% end %> 
